@@ -22,8 +22,12 @@ public class MainActivity extends AppCompatActivity {
 
     ConsumerIrManager mCIR;
     SparseArray<String> irData;
-    Button button1;
-    Button button2;
+
+    Button buttonVolumeUp;
+    Button buttonVolumeDown;
+    Button buttonChannelUp;
+    Button buttonChannelDown;
+
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -36,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button1 = (Button) findViewById(R.id.button1);
-        button2 = (Button) findViewById(R.id.button2);
+        buttonVolumeUp = (Button) findViewById(R.id.buttonVolumeUp);
+        buttonVolumeDown = (Button) findViewById(R.id.buttonVolumeDown);
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -58,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    public void onButton1Click(View view) {
+    public void onButtonClick(View view) {
         if (mCIR.hasIrEmitter() == false) {
             Log.e("My app", "No IR Emitter found\n");
 
