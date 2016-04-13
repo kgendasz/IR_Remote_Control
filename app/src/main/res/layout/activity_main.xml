@@ -1,47 +1,62 @@
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginBottom="-12dp">
 
-    android:useDefaultMargins="false"
-    android:rowOrderPreserved="false"
-    android:columnOrderPreserved="false">
+        <Button
+            android:id="@+id/buttonVolumePlus"
+            android:layout_width="0dp"
+           android:text="+"
+            android:layout_weight="1"
+            style="@style/buttonMain"
+            />
 
+        <Space
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="match_parent" />
 
-    <Button
-        android:text="+"
-        android:id="@+id/buttonVolumeUp"
-        android:layout_row="0"
-        android:layout_column="0"
-        style="@style/buttonMain"
-        android:layout_width="wrap_content" />
+        <Button
+            android:id="@+id/buttonChannelUp"
+            android:layout_width="0dp"
+           android:text="^"
+            android:layout_weight="1"
+            style="@style/buttonMain"
+            />
+    </LinearLayout>
 
-    <Button
-        android:text="^"
-        android:id="@+id/buttonChannelUp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/buttonVolumeMinus"
+            android:layout_width="0dp"
+            android:text="-"
+            android:layout_weight="1"
+            style="@style/buttonMain" />
 
-        android:layout_row="0"
-        android:layout_column="2"
-        style="@style/buttonMain"
+        <Space
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="match_parent" />
 
-        android:layout_width="wrap_content" />
+        <Button
+            android:id="@+id/buttonChannelDown"
+            android:layout_width="0dp"
+           android:text="˅"
+            android:layout_weight="1"
+            style="@style/buttonMain"
+            />
+    </LinearLayout>
+</LinearLayout>
 
-
-    <Button
-        android:text="-"
-        android:id="@+id/buttonVolumeDown"
-        android:layout_row="1"
-        android:layout_column="0"
-        style="@style/buttonMain"
-        />
-
-    <Button
-        android:text="l"
-        android:id="@+id/buttonChannelDown"
-        android:layout_row="1"
-        android:layout_column="2"
-        style="@style/buttonMain">
-    </Button>
-</GridLayout>
 
 
