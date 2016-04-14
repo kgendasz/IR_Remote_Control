@@ -1,35 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
-
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    android:padding="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="-12dp">
+        android:layout_marginBottom="-10dp">
 
         <Button
-            android:id="@+id/buttonVolumeUp"
+            android:id="@+id/WbuttonVolumeUp"
             android:layout_width="0dp"
             android:text="+"
             android:layout_weight="1"
-            style="@style/buttonMain"
+            style="@style/buttonWidget"
             />
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_weight="0.2"
-            android:layout_height="match_parent" />
 
         <Button
-            android:id="@+id/buttonChannelUp"
+            android:id="@+id/WbuttonChannelUp"
             android:layout_width="0dp"
-           android:text="^"
+            android:text="Up"
             android:layout_weight="1"
-            style="@style/buttonMain"
+            style="@style/buttonWidget"
             />
     </LinearLayout>
 
@@ -37,26 +32,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/buttonVolumeDown"
+            android:id="@+id/WbuttonVolumeDown"
             android:layout_width="0dp"
             android:text="-"
             android:layout_weight="1"
-            style="@style/buttonMain" />
+            style="@style/buttonWidget"
+          />
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_weight="0.2"
-            android:layout_height="match_parent" />
 
         <Button
-            android:id="@+id/buttonChannelDown"
+            android:id="@+id/WbuttonChannelDown"
             android:layout_width="0dp"
-           android:text="˅"
+            android:text="Down"
             android:layout_weight="1"
-            style="@style/buttonMain"
+            style="@style/buttonWidget"
+
             />
     </LinearLayout>
+
 </LinearLayout>
-
-
-
