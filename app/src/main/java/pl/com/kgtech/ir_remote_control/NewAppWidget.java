@@ -12,6 +12,13 @@ import android.widget.RemoteViews;
  */
 public class NewAppWidget extends AppWidgetProvider {
 
+    Button buttonVolumeUp;
+    Button buttonVolumeDown;
+    Button buttonChannelUp;
+    Button buttonChannelDown;
+
+
+
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
 

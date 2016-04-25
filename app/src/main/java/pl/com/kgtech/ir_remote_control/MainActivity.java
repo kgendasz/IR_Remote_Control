@@ -23,17 +23,14 @@ public class MainActivity extends AppCompatActivity {
     ConsumerIrManager mCIR;
     SparseArray<String> irData;
 
+    IrRemoteControl oIrRemoteControl;
+
     Button buttonVolumeUp;
     Button buttonVolumeDown;
     Button buttonChannelUp;
     Button buttonChannelDown;
 
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,19 +39,15 @@ public class MainActivity extends AppCompatActivity {
 
         buttonVolumeUp = (Button) findViewById(R.id.buttonVolumeUp);
         buttonVolumeDown = (Button) findViewById(R.id.buttonVolumeDown);
+        buttonChannelUp = (Button) findViewById(R.id.buttonChannelUp);
+        buttonChannelDown = (Button) findViewById(R.id.buttonChannelDown);
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        oIrRemoteControl = new IrRemoteControl(this);
 
         // Get a reference to the ConsumerIrManager
         mCIR = (ConsumerIrManager) getSystemService(CONSUMER_IR_SERVICE);
 
-     //   irData.put(
-       //         R.id.button2,
-                hex2dec("0000 006d 0022 0003 00a9 00a8 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 0015 0015 0015 0015 003f 0015 0015 0015 0015 0015 0015 0015 003f 0015 0015 0015 003f 0015 003f 0015 0015 0015 0040 0015 003f 0015 003f 0015 0702 00a9 00a8 0015 0015 0015 0e6e");
 
-        int i=3;
     }
 
     public void onEndClick(View view) {
@@ -62,32 +55,38 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    public void onButtonClick(View view) {
-        if (mCIR.hasIrEmitter() == false) {
-            Log.e("My app", "No IR Emitter found\n");
 
-        }
-        else
-            Log.e("My app", "IR Emitter found\n");
-    }
 
     private static final int SAMSUNG_FREQ = 38028;
     private static final int[] SAMSUNG_POWER_TOGGLE_COUNT = {169,168,21,63,21,63,21,63,21,21,21,21,21,21,21,21,21,21,21,63,21,63,21,63,21,21,21,21,21,21,21,21,21,21,21,21,21,63,21,21,21,21,21,21,21,21,21,21,21,21,21,64,21,21,21,63,21,63,21,63,21,63,21,63,21,63,21,1794,169,168,21,21,21,3694};
 
     private static final int[] SAMSUNG_POWER_TOGGLE_DURATION = {4368,546,1638,546,1638,546,1638,546,546,546,546,546,546,546,546,546,546,546,1638,546,1638,546,1638,546,546,546,546,546,546,546,546,546,546,546,546,546,1638,546,546,546,546,546,546,546,546,546,546,546,546,546,1664,546,546,546,1638,546,1638,546,1638,546,1638,546,1638,546,1638,546,46644,4394,4368,546,546,546,96044};
 
-    public void onButton2Click(View view) {
-//        if (!mCIR.hasIrEmitter()) {
-//            Log.e("My app", "No IR Emitter found\n");
-//            return;
-//        }
+    public void buttonClick(View view) {
 
-//        // Later version of Android 4.4.3
-//        mCIR.transmit(SAMSUNG_FREQ, SAMSUNG_POWER_TOGGLE_DURATION);
+        Button oButton = (Button)view;
+
+        switch (view.getId())
+        {
+            case R.id.buttonVolumeUp:
+                oIrRemoteControl.VolumeUp();
+                break;
+            case R.id.buttonVolumeDown:
+                oIrRemoteControl.VolumeDown();
+                break;
+            case R.id.buttonChannelUp:
+                oIrRemoteControl.ChannelUp();
+                break;
+            case R.id.buttonChannelDown:
+                oIrRemoteControl.ChannelDown();
+                break;
+
+        }
 
 
+        return;
 
-        String data = hex2dec("0000 006d 0022 0003 00a9 00a8 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 0015 0015 0015 0015 003f 0015 0015 0015 0015 0015 0015 0015 003f 0015 0015 0015 003f 0015 003f 0015 0015 0015 0040 0015 003f 0015 003f 0015 0702 00a9 00a8 0015 0015 0015 0e6e");
+       /* String data = hex2dec("0000 006d 0022 0003 00a9 00a8 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 0015 0015 0015 0015 003f 0015 0015 0015 0015 0015 0015 0015 003f 0015 0015 0015 003f 0015 003f 0015 0015 0015 0040 0015 003f 0015 003f 0015 0702 00a9 00a8 0015 0015 0015 0e6e");
 
         if (data != null) {
             String values[] = data.split(",");
@@ -100,10 +99,8 @@ public class MainActivity extends AppCompatActivity {
             mCIR.transmit(Integer.parseInt(values[0]), pattern);
             Log.e("My app", "Finish transmit\n");
         }
-
+*/
     }
-
-
 
 
     protected String hex2dec(String irData) {
@@ -131,52 +128,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Main Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://pl.com.kgtech.ir_remote_control/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Main Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://pl.com.kgtech.ir_remote_control/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
-    }
 
 
 
