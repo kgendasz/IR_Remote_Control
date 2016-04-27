@@ -3,7 +3,6 @@ package pl.com.kgtech.ir_remote_control;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RemoteViews;
 
@@ -24,7 +23,7 @@ public class NewAppWidget extends AppWidgetProvider {
 
         CharSequence widgetText = context.getString(R.string.appwidget_text);
         // Construct the RemoteViews object
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.new_app_widget);
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.app_widget);
 //        views.setTextViewText(R.id.appwidget_text, widgetText);
 
         // Instruct the widget manager to update the widget
