@@ -1,15 +1,18 @@
 package pl.com.kgtech.ir_remote_control;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.RemoteViews;
 
 /**
  * Implementation of App Widget functionality.
  */
-public class NewAppWidget extends AppWidgetProvider {
+public class AppWidget extends AppWidgetProvider {
 
     Button buttonVolumeUp;
     Button buttonVolumeDown;
@@ -36,6 +39,24 @@ public class NewAppWidget extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
 
+
+            RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
+                    R.layout.app_widget);
+            Log.w("WidgetExample", String.valueOf(appWidgetId));
+            // Set the text
+
+           // remoteViews.setTextViewText(R.id.update, String.valueOf(number));
+
+            // Register an onClickListener
+            Intent intent = new Intent(context, AppWidget.class);
+
+            intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
+
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
+                    0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            remoteViews.setOnClickPendingIntent(R.id.buttonVolumeUp, pendingIntent);
+            appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
 
         }
     }

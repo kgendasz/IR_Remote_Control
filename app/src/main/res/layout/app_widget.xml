@@ -38,7 +38,7 @@
             android:layout_width="0dp"
             android:text="-"
             android:layout_weight="1"
-            android:background="@drawable/button_down_shape"
+            android:background="@drawable/button_down_selector"
             style="@style/buttonWidget"
           />
 
@@ -47,7 +47,7 @@
             android:layout_width="0dp"
             android:text="Down"
             android:layout_weight="1"
-            android:background="@drawable/button_down_shape"
+            android:background="@drawable/button_down_selector"
             style="@style/buttonWidget"
 
             />
